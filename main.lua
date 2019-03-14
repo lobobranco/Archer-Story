@@ -3,7 +3,7 @@ local physics = require("physics")
 physics.start()
 
  -- fundo da fase --
-local background = display.newImageRect( "Sprites/mordorbd.png", 640, 320)
+local background = display.newImageRect( "Sprites/easyBG.png", 640, 320)
 background.x = display.contentCenterX
 background.y = display.contentCenterY
 
@@ -22,10 +22,10 @@ atkiconRight.alpha = 0.7
 physics.addBody (atkiconRight, "static", { radius=35 })
 
 -- personagem --
-local char = display.newImageRect ( "Sprites/char.png", 50, 70)
+local char = display.newImageRect ( "Sprites/archerLeft.png", 50, 60)
 char.x = display.contentCenterX
 char.y = display.contentCenterY+30
-physics.addBody (char, "dynamic")
+physics.addBody (char, "dynamic", { isSensor=false })
 
 -- chão da fase (eixo x, eixo y, largura, altura)--
 local floor = display.newRect (180, 240, 720, 1)
@@ -80,17 +80,17 @@ local function spawnItem( bounds )
     local position = math.random (2)
     print(position)
     if (position == 1) then 
-        local item = display.newImageRect ( "Sprites/monster.png", 50, 50)
-        physics.addBody (item, "dynamic", { radius = 25, bounce = 0 })
-        item.x = -100
-        item.y = 210
-        item:setLinearVelocity(50, 0)
+        local monster = display.newImageRect ( "Sprites/monster.png", 50, 50)
+        physics.addBody (monster, "dynamic", { radius = 25, bounce = 0 })
+        monster.x = -100
+        monster.y = 210
+        monster:setLinearVelocity(50, 0)
     else
-        local item = display.newImageRect ( "Sprites/monster2.png", 50, 50)
-        physics.addBody (item, "dynamic", { radius = 25, bounce = 0 })
-        item.x = 495
-        item.y = 210
-        item:setLinearVelocity(-50, 0)
+        local monster = display.newImageRect ( "Sprites/monster2.png", 50, 50)
+        physics.addBody (monster, "dynamic", { radius = 25, bounce = 0 })
+        monster.x = 495
+        monster.y = 210
+        monster:setLinearVelocity(-50, 0)
     end
     spawnedObjects[#spawnedObjects+1] = item
 end

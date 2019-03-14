@@ -25,7 +25,7 @@ physics.addBody (atkiconRight, "static", { radius=35 })
 local char = display.newImageRect ( "Sprites/archerLeft.png", 50, 60)
 char.x = display.contentCenterX
 char.y = display.contentCenterY+30
-physics.addBody (char, "dynamic", { isSensor=false })
+physics.addBody (char, "static", { isSensor=false })
 
 -- chão da fase (eixo x, eixo y, largura, altura)--
 local floor = display.newRect (180, 240, 720, 1)
@@ -36,28 +36,25 @@ physics.addBody (floor, "static")
 
  -- função pra atacar pra esquerda --
 local function atkLeft()
-    char.x = char.x+40
-end
-
- -- função pra retorno da esquerda --
-local function atkLeftR()
-    char.x = char.x-40
-    timer.performWithDelay( 200, atkLeft )
+    local arrowLeft = display.newImageRect ( "Sprites/arrowLeft.png", 50, 5)
+    arrowLeft.x = display.contentCenterX-40
+    arrowLeft.y = display.contentCenterY+37
+    physics.addBody (arrowLeft, "dynamic")
+    arrowLeft:setLinearVelocity(-500, 0)
 end
 
 -- função para atacar pra direita --
 local function atkRight()
-    char.x = char.x-40
+    local arrowRight = display.newImageRect ( "Sprites/arrowRight.png", 50, 5)
+    arrowRight.x = display.contentCenterX+40
+    arrowRight.y = display.contentCenterY+37
+    physics.addBody (arrowRight, "dynamic")
+    arrowRight:setLinearVelocity(500, 0)
 end
 
- -- função pra retorno da direita --
-local function atkRightR()
-    char.x = char.x+40
-    timer.performWithDelay( 200, atkRight )
-end
 
-atkiconRight:addEventListener( "tap", atkRightR )
-atkiconLeft:addEventListener( "tap", atkLeftR )
+atkiconRight:addEventListener( "tap", atkRight )
+atkiconLeft:addEventListener( "tap", atkLeft )
 
 -- inciar o spawn dos monstros --
 local spawnTimer

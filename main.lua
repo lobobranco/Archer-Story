@@ -11,12 +11,12 @@ local livesText
 local scoreText
 
  -- fundo da fase --
-local background = display.newImageRect( "Sprites/easyBG.png", 640, 320)
+local background = display.newImageRect( "Sprites/mordorBG.png", 640, 320)
 background.x = display.contentCenterX
 background.y = display.contentCenterY
 
 -- pontuação -- 
-scoreText = display.newText( "Score: " .. score, 240, 290, native.systemFont, 36 )
+scoreText = display.newText( "Score    " .. score, 240, 290, "Kingdom Hearts", 72 )
 
 -- icone para atacar para a esquerda --
 local atkiconLeft = display.newImageRect( "Sprites/atkiconLeft.png", 65, 65 )
@@ -89,7 +89,6 @@ local function atkRight()
     arrowRight.myName = "arrowRight"
 end
 
-
 atkiconRight:addEventListener( "tap", atkRight )
 atkiconLeft:addEventListener( "tap", atkLeft )
 
@@ -104,7 +103,7 @@ local spawnParams = {
     xMax = 120,
     yMin = 210,
     yMax = 210,
-    spawnTime = 800,
+    spawnTime = 350,
     spawnOnTimer = 1,
     spawnInitial = 1
 }
@@ -124,7 +123,7 @@ local function spawnItem( bounds )
     elseif (position == 2) then
         local monster = display.newImageRect ( "Sprites/monster1R.png", 65, 65)
         physics.addBody (monster, "dynamic", { bounce = 0 })
-        monster.x = 495
+        monster.x = 525
         monster.y = 210
         monster:setLinearVelocity(-130, 0)
         monster.myName = "monster"
@@ -140,7 +139,7 @@ local function spawnItem( bounds )
     else 
         local monster = display.newImageRect ( "Sprites/monster2R.png", 30, 45)
         physics.addBody (monster, "dynamic", { bounce = 0 })
-        monster.x = 510
+        monster.x = 550
         monster.y = 210
         monster:setLinearVelocity(-130, 0)
         monster.myName = "monster"
@@ -228,7 +227,7 @@ local function onCollision ( event )
             display.remove ( obj1 )
             display.remove ( obj2 )
             score = score + 1
-			scoreText.text = "Score: " .. score
+			scoreText.text = "Score    " .. score
             for i = #spawnedObjects, 1, -1 do
                 if ( spawnedObjects[i] == obj1 or spawnedObjects[i] == obj2 ) then
                     table.remove( spawnedObjects, i )

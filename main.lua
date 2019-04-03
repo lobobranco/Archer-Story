@@ -23,6 +23,7 @@ local atkiconLeft = display.newImageRect( "Sprites/atkiconLeft.png", 65, 65 )
 atkiconLeft.x = display.contentCenterX-230
 atkiconLeft.y = display.contentCenterY+120
 atkiconLeft.alpha = 0.7
+atkiconLeft.myName = "atkiconLeft"
 physics.addBody (atkiconLeft, "static", { radius=35 })
 
 -- icone para atacar para a direita --
@@ -53,26 +54,41 @@ floor.alpha = 0.0
 floor.name = "Floor"
 physics.addBody (floor, "static")
 
+local isTouchEnabled = true
+local function leftShotEnable()
+        print("testando")
+        isTouchEnabled = true
+end
+
  -- função pra atacar pra esquerda --
 local function atkLeft()
-    display.remove(char)
-    char = display.newImageRect ( "Sprites/archerLeft.png", 50, 60)
-    char.x = display.contentCenterX
-    char.y = display.contentCenterY+50
-    physics.addBody (char, "static", { isSensor=false })
-    char.myName = "char"
+    print("left1")
+    if isTouchEnabled then
+        isTouchEnabled = false
+        print("left")
+        system.setTapDelay(10)
+        display.remove(char)
+        char = display.newImageRect ( "Sprites/archerLeft.png", 50, 60)
+        char.x = display.contentCenterX
+        char.y = display.contentCenterY+50
+        physics.addBody (char, "static", { isSensor=false })
+        char.myName = "char"
 
-    local arrowLeft = display.newImageRect ( "Sprites/arrowLeft.png", 50, 5)
-    arrowLeft.x = display.contentCenterX-40
-    arrowLeft.y = display.contentCenterY+40
-    physics.addBody (arrowLeft, "dynamic", { bounce = 0 })
-    arrowLeft:setLinearVelocity(-500, 0)
-    arrowLeft.gravityScale = 0
-    arrowLeft.myName = "arrowLeft"
+        local arrowLeft = display.newImageRect ( "Sprites/arrowLeft.png", 50, 5)
+        arrowLeft.x = display.contentCenterX-40
+        arrowLeft.y = display.contentCenterY+40
+        physics.addBody (arrowLeft, "dynamic", { bounce = 0 })
+        arrowLeft:setLinearVelocity(-500, 0)
+        arrowLeft.gravityScale = 0
+        arrowLeft.myName = "arrowLeft"
+
+        transition.to( atkiconLeft, { time=1000, onComplete=leftShotEnable(), isTouchEnabled=true } )
+    end
 end
 
 -- função para atacar pra direita --
 local function atkRight()
+    system.setTapDelay(10)
     display.remove(char)
     char = display.newImageRect ( "Sprites/archerRight.png", 50, 60)
     char.x = display.contentCenterX
@@ -89,8 +105,8 @@ local function atkRight()
     arrowRight.myName = "arrowRight"
 end
 
-atkiconRight:addEventListener( "tap", atkRight )
 atkiconLeft:addEventListener( "tap", atkLeft )
+atkiconRight:addEventListener( "tap", atkRight )
 
 -- inciar o spawn dos monstros --
 local spawnTimer
@@ -103,7 +119,7 @@ local spawnParams = {
     xMax = 120,
     yMin = 210,
     yMax = 210,
-    spawnTime = 350,
+    spawnTime = 1000,
     spawnOnTimer = 1,
     spawnInitial = 1
 }

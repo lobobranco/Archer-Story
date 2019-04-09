@@ -7,8 +7,8 @@ physics.start()
 --physics.setDrawMode("hybrid")
 
 -- variáveis necessárias --
-local lives = 3
-local score = 0
+lives = 3
+score = 0
 local died = false
 local livesText
 local scoreText
@@ -287,6 +287,12 @@ local function onCollision ( event )
                 else 
                     spawnController( "stop", spawnParams )
                     display.remove(char)
+                    display.remove(background)
+                    display.remove(atkiconLeft)
+                    display.remove(atkiconRight)
+                    display.remove(scoreText)
+                    display.remove(live)
+                    composer.gotoScene( "gameover", { time=150, effect="crossFade"} )
                 end
             end
         end

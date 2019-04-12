@@ -249,7 +249,14 @@ Runtime:addEventListener( "collision", onCollision )
 composer.recycleOnSceneChange = true;
 function scene:create ( event )
     sceneGroup = self.view
-    
+end
+
+function scene:show( event )
+    local sceneGroup = self.view
+    local phase = event.phase
+
+    if ( phase == "will" ) then
+            
     -- variáveis necessárias --
     lives = 3
     score = 0
@@ -310,13 +317,6 @@ function scene:create ( event )
     sceneGroup:insert(char)
     sceneGroup:insert(live)
     sceneGroup:insert(floor)
-end
-
-function scene:show( event )
-    local sceneGroup = self.view
-    local phase = event.phase
-
-    if ( phase == "will" ) then
     elseif ( phase == "did" ) then
     end
 end

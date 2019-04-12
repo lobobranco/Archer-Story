@@ -9,7 +9,7 @@ local function gotoMenu()
 end
 
 local function gotoEasy()
-    composer.gotoScene( "easy", { time=150, effect="crossFade"} )
+    composer.gotoScene( "easyNew", { time=150, effect="crossFade"} )
 end
 
 local function gotoNormal()

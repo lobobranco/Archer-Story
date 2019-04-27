@@ -185,7 +185,7 @@ local function onCollision ( event )
             display.remove ( obj1 )
             display.remove ( obj2 )
             score = score + 1
-            scoreText.text = "Score    " .. score
+            scoreText.text = "Pontos    " .. score
             for i = #spawnedObjects, 1, -1 do
                 if ( spawnedObjects[i] == obj1 or spawnedObjects[i] == obj2 ) then
                     table.remove( spawnedObjects, i )
@@ -258,7 +258,7 @@ function scene:show( event )
     background.y = display.contentCenterY
 
     -- pontuação -- 
-    scoreText = display.newText( "Score    " .. score, 240, 280, "Kingdom Hearts", 72 )
+    scoreText = display.newText( "Pontos    " .. score, 240, 280, "Kingdom Hearts", 50 )
 
     -- icone para atacar para a esquerda --
     atkiconLeft = display.newImageRect( "Sprites/atkiconLeft.png", 65, 65 )

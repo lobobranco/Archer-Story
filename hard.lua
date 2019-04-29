@@ -39,7 +39,7 @@ function atkLeft()
     arrowLeft.myName = "arrowLeft"
 
     atkiconLeft:removeEventListener( "tap", atkLeft)
-    timer.performWithDelay(700,releaseAtkLeft)
+    timer.performWithDelay(670,releaseAtkLeft)
 end
 
 -- função para atacar pra direita --
@@ -61,7 +61,7 @@ function atkRight()
     arrowRight.myName = "arrowRight"
 
     atkiconRight:removeEventListener( "tap", atkRight)
-    timer.performWithDelay(700,releaseAtkRight)
+    timer.performWithDelay(670,releaseAtkRight)
 end
 
 -- restaurar personagem -- 
@@ -224,6 +224,8 @@ local function onCollision ( event )
                     spawnController( "stop", spawnParams )
                     display.remove(char)
                     display.remove(scoreText)
+                    atkiconLeft:removeEventListener( "tap", atkLeft)
+                    atkiconRight:removeEventListener( "tap", atkRight)
                     gotoDeath()
                 end
             end

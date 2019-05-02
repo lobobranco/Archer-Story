@@ -6,8 +6,12 @@ local physics = require("physics")
 physics.start()
 --physics.setDrawMode("hybrid")
 
+easymusic = audio.loadSound( "soundtrack/easy.wav" )
+audio.play( easymusic, {channel=3, loops=-1} )
+
 local function gotoDeath()
     composer.gotoScene( "gameover", { time=150, effect="crossFade"} )
+    audio.stop(3)
 end
 
 -- resetar atk da esquerda --

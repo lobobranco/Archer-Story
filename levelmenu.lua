@@ -10,18 +10,22 @@ end
 
 local function gotoEasy()
     composer.gotoScene( "easy", { time=150, effect="crossFade"} )
+    audio.stop(1)
 end
 
 local function gotoNormal()
     composer.gotoScene( "normal", { time=150, effect="crossFade"} )
+    audio.stop(1)
 end
 
 local function gotoHard()
     composer.gotoScene( "hard", { time=150, effect="crossFade"} )
+    audio.stop(1)
 end
 
 local function gotoMordor()
     composer.gotoScene( "mordor", { time=150, effect="crossFade"} )
+    audio.stop(1)
 end
 
 -- funções do composer --

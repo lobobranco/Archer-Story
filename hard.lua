@@ -6,8 +6,12 @@ local physics = require("physics")
 physics.start()
 --physics.setDrawMode("hybrid")
 
+hardmusic = audio.loadSound( "soundtrack/hard.wav" )
+audio.play( hardmusic, {channel=5, loops=-1} )
+
 local function gotoDeath()
     composer.gotoScene( "gameover", { time=150, effect="crossFade"} )
+    audio.stop(5)
 end
 
 -- resetar atk da esquerda --
@@ -39,7 +43,7 @@ function atkLeft()
     arrowLeft.myName = "arrowLeft"
 
     atkiconLeft:removeEventListener( "tap", atkLeft)
-    timer.performWithDelay(670,releaseAtkLeft)
+    timer.performWithDelay(610,releaseAtkLeft)
 end
 
 -- função para atacar pra direita --
@@ -61,7 +65,7 @@ function atkRight()
     arrowRight.myName = "arrowRight"
 
     atkiconRight:removeEventListener( "tap", atkRight)
-    timer.performWithDelay(670,releaseAtkRight)
+    timer.performWithDelay(610,releaseAtkRight)
 end
 
 -- restaurar personagem -- 
@@ -89,7 +93,7 @@ local spawnParams = {
     xMax = 120,
     yMin = 210,
     yMax = 210,
-    spawnTime = 575,
+    spawnTime = 560,
     spawnOnTimer = 2,
     spawnInitial = 1
 }

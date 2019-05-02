@@ -6,8 +6,12 @@ local physics = require("physics")
 physics.start()
 --physics.setDrawMode("hybrid")
 
+mordormusic = audio.loadSound( "soundtrack/mordor.wav" )
+audio.play( mordormusic, {channel=6, loops=-1} )
+
 local function gotoDeath()
     composer.gotoScene( "gameover", { time=150, effect="crossFade"} )
+    audio.stop(6)
 end
 
 -- resetar atk da esquerda --
@@ -39,7 +43,7 @@ function atkLeft()
     arrowLeft.myName = "arrowLeft"
 
     atkiconLeft:removeEventListener( "tap", atkLeft)
-    timer.performWithDelay(330,releaseAtkLeft)
+    timer.performWithDelay(280,releaseAtkLeft)
 end
 
 -- função para atacar pra direita --
@@ -61,7 +65,7 @@ function atkRight()
     arrowRight.myName = "arrowRight"
 
     atkiconRight:removeEventListener( "tap", atkRight)
-    timer.performWithDelay(330,releaseAtkRight)
+    timer.performWithDelay(280,releaseAtkRight)
 end
 
 -- restaurar personagem -- 

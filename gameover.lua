@@ -4,8 +4,13 @@ local scene = composer.newScene()
 local physics = require("physics")
 physics.start()
 
+deathmusic = audio.loadSound( "soundtrack/death.wav" )
+audio.play( deathmusic, {channel=2, loops=-1} )
+
 local function gotoMenu()
     composer.gotoScene( "mainmenu", { time=150, effect="crossFade"} )
+    audio.stop(2)
+    audio.play( menumusic, {channel=1, loops=-1} )
 end
 
 -- funções do composer --

@@ -43,7 +43,7 @@ function atkLeft()
     arrowLeft.myName = "arrowLeft"
 
     atkiconLeft:removeEventListener( "tap", atkLeft)
-    timer.performWithDelay(610,releaseAtkLeft)
+    timer.performWithDelay(580,releaseAtkLeft)
 end
 
 -- função para atacar pra direita --
@@ -65,7 +65,7 @@ function atkRight()
     arrowRight.myName = "arrowRight"
 
     atkiconRight:removeEventListener( "tap", atkRight)
-    timer.performWithDelay(610,releaseAtkRight)
+    timer.performWithDelay(580,releaseAtkRight)
 end
 
 -- restaurar personagem -- 

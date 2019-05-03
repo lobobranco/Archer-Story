@@ -10,7 +10,7 @@ easymusic = audio.loadSound( "soundtrack/easy.wav" )
 audio.play( easymusic, {channel=3, loops=-1} )
 
 local function gotoDeath()
-    composer.gotoScene( "gameover", { time=150, effect="crossFade"} )
+    composer.gotoScene( "gameover", { time=1000, effect="crossFade"} )
     audio.stop(3)
 end
 
@@ -227,7 +227,6 @@ local function onCollision ( event )
                     -- vidas zeraram --
                     spawnController( "stop", spawnParams )
                     display.remove(char)
-                    display.remove(scoreText)
                     atkiconLeft:removeEventListener( "tap", atkLeft)
                     atkiconRight:removeEventListener( "tap", atkRight)
                     gotoDeath()
@@ -235,6 +234,19 @@ local function onCollision ( event )
             end
         end
     end
+end
+
+--Desistir do jogo
+local function quit()
+    for i = #spawnedObjects, 1, -1 do
+        display.remove( spawnedObjects[i] )
+        table.remove( spawnedObjects, i )
+    end
+    spawnController( "stop", spawnParams )
+    display.remove(char)
+    atkiconLeft:removeEventListener( "tap", atkLeft)
+    atkiconRight:removeEventListener( "tap", atkRight)
+    gotoDeath()
 end
 
 Runtime:addEventListener( "collision", onCollision )
@@ -266,6 +278,14 @@ function scene:show( event )
     -- pontuação -- 
     scoreText = display.newText( "Pontos    " .. score, 240, 280, "Kingdom Hearts", 50 )
 
+    -- botao de desistir --
+    quitbutton = display.newImageRect("Sprites/quit.png", 80, 35 )
+    quitbutton.x = display.contentCenterX+240
+    quitbutton.y = display.contentCenterY-140
+    quitbutton.alpha = 0.7
+    quitbutton.myName = "quit"
+    physics.addBody (quitbutton, "static", {radius=35} )
+ 
     -- icone para atacar para a esquerda --
     atkiconLeft = display.newImageRect( "Sprites/atkiconLeft.png", 65, 65 )
     atkiconLeft.x = display.contentCenterX-230
@@ -283,6 +303,7 @@ function scene:show( event )
 
     atkiconLeft:addEventListener( "tap", atkLeft )
     atkiconRight:addEventListener( "tap", atkRight )
+    quitbutton:addEventListener( "tap", quit )
 
     -- personagem --
     char = display.newImageRect ( "Sprites/archerLeft.png", 50, 60)
@@ -310,6 +331,7 @@ function scene:show( event )
     sceneGroup:insert(char)
     sceneGroup:insert(live)
     sceneGroup:insert(floor)
+    sceneGroup:insert(quitbutton)
     elseif ( phase == "did" ) then
     end
 end
@@ -328,6 +350,8 @@ function scene:destroy( event )
     atkiconLeft = nil
     atkiconRight:removeSelf()
     atkiconRight = nil
+    quitbutton:removeSelf()
+    quitbutton = nil
     floor:removeSelf()
     floor = nil
     Runtime:removeEventListener( "collision", onCollision )

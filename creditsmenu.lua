@@ -17,7 +17,7 @@ function scene:create ( event )
     background.y = display.contentCenterY
 
     -- botão para voltar --
-    back = display.newRect( -17, 15, 50, 75 )
+    back = display.newRect( -22, 22, 45, 45 )
     back.alpha = 0.01
 
     sceneGroup:insert(background)

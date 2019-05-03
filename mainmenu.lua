@@ -27,20 +27,20 @@ function scene:create ( event )
     background.x = display.contentCenterX
     background.y = display.contentCenterY
 
-    -- botão de créditos --
-    credits = display.newRect( 40, 270, 100, 30 )
-    credits.alpha = 0.01
-
     -- botão para iniciar game -- 
-    start = display.newRect( 190, 270, 125, 50 )
+    start = display.newRect( 57, 235, 110, 45 )
     start.alpha = 0.01
 
     -- botão para abrir tutorial --
-    tutorial = display.newRect( 320, 270, 110, 40 )
+    tutorial = display.newRect( 183, 235, 110, 45 )
     tutorial.alpha = 0.01
 
+    -- botão de créditos --
+    credits = display.newRect( 305, 235, 110, 45 )
+    credits.alpha = 0.01
+
     -- botão para fechar o jogo --
-    exit = display.newRect(445, 270, 65, 35)
+    exit = display.newRect(425, 235, 110, 45)
     exit.alpha = 0.01
 
     sceneGroup:insert(background)

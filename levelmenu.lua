@@ -38,23 +38,23 @@ function scene:create ( event )
     background.y = display.contentCenterY
 
     -- botão para voltar --
-    back = display.newRect( -17, 15, 50, 75 )
+    back = display.newRect( -20, 22, 42, 42 )
     back.alpha = 0.01
 
     --botão para jogar o modo fácil --
-    easy = display.newRect( 42, 255, 124, 95 )
+    easy = display.newRect( 66, 240, 120, 105 )
     easy.alpha = 0.01
 
     --botão para jogar o modo normal --
-    normal = display.newRect( 175, 255, 124, 95 )
+    normal = display.newRect( 185, 240, 120, 105 )
     normal.alpha = 0.01
 
     --botão para jogar o modo difícil --
-    hard = display.newRect( 305, 255, 124, 95 )
+    hard = display.newRect( 305, 240, 120, 105 )
     hard.alpha = 0.01
 
     --botão para jogar o modo MORDOR --
-    mordor = display.newRect(440, 255, 124, 95 )
+    mordor = display.newRect(425, 240, 120, 105 )
     mordor.alpha = 0.01
 
     sceneGroup:insert(background)

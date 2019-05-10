@@ -43,7 +43,7 @@ function atkLeft()
     arrowLeft.myName = "arrowLeft"
 
     atkiconLeft:removeEventListener( "tap", atkLeft)
-    timer.performWithDelay(650,releaseAtkLeft)
+    timer.performWithDelay(580,releaseAtkLeft)
 end
 
 -- função para atacar pra direita --
@@ -65,7 +65,7 @@ function atkRight()
     arrowRight.myName = "arrowRight"
 
     atkiconRight:removeEventListener( "tap", atkRight)
-    timer.performWithDelay(650,releaseAtkRight)
+    timer.performWithDelay(580,releaseAtkRight)
 end
 
 -- restaurar personagem -- 
@@ -93,7 +93,7 @@ local spawnParams = {
     xMax = 120,
     yMin = 210,
     yMax = 210,
-    spawnTime = 700,
+    spawnTime = 560,
     spawnOnTimer = 2,
     spawnInitial = 1
 }

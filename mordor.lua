@@ -289,7 +289,7 @@ function scene:show( event )
     physics.addBody (quitbutton, "static", {radius=35} )
 
     -- icone para atacar para a esquerda --
-    atkiconLeft = display.newImageRect( "Sprites/atkiconLeft.png", 65, 65 )
+    atkiconLeft = display.newImageRect( "Sprites/atkiconLeft2.png", 65, 65 )
     atkiconLeft.x = display.contentCenterX-230
     atkiconLeft.y = display.contentCenterY+120
     atkiconLeft.alpha = 0.7
@@ -297,7 +297,7 @@ function scene:show( event )
     physics.addBody (atkiconLeft, "static", { radius=35 })
 
     -- icone para atacar para a direita --
-    atkiconRight = display.newImageRect( "Sprites/atkiconRight.png", 65, 65 )
+    atkiconRight = display.newImageRect( "Sprites/atkiconRight2.png", 65, 65 )
     atkiconRight.x = display.contentCenterX+230
     atkiconRight.y = display.contentCenterY+120
     atkiconRight.alpha = 0.7

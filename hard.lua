@@ -278,7 +278,7 @@ function scene:show( event )
     background.y = display.contentCenterY
 
     -- pontuação -- 
-    scoreText = display.newText( "Pontos    " .. score, 240, 280, "Kingdom Hearts", 50 )
+    scoreText = display.newText( "Pontos    " .. score, 240, 280, "Kingdom Hearts", 40 )
     
     -- botao de desistir --
     quitbutton = display.newImageRect("Sprites/quit.png", 80, 35 )
